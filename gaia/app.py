@@ -1,8 +1,9 @@
 from flask import Flask, request
 from gaia.api.views import api
-import gaia.demo.views
 import os,logging
 import logging.handlers
+
+import gaia.demo.views
 
 
 def create_app(config=None):

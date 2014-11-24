@@ -10,9 +10,11 @@ def call():
     start = time.time()
     method = request.form.get('method')
     params = request.form.get('params')
-    response = api_manager.dispatch(method, json.loads(params))
+    rpcdata = api_manager.dispatch(method, json.loads(params))
+    data = {}
+    data["result"] = rpcdata
     end = time.time()
     cost = end - start
     current_app.logger.info("%s %f",method,cost)
-    return response
+    return json.dumps(data)
 
